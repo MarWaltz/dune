@@ -1,2 +1,0 @@
-/usr/bin/ar qc libManeuver.VehicleFormation.SMC.a CMakeFiles/Maneuver.VehicleFormation.SMC.dir/src/Maneuver/VehicleFormation/SMC/Task.cpp.o
-/usr/bin/ranlib libManeuver.VehicleFormation.SMC.a

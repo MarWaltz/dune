@@ -28,7 +28,7 @@
 //***************************************************************************
 // Automatically generated.                                                 *
 //***************************************************************************
-// IMC XML MD5: feead2f5ef68963728f09deea5b4dbdd                            *
+// IMC XML MD5: 86c7ceace2a6f6239ea89a0e5bc64a3f                            *
 //***************************************************************************
 
 #ifndef DUNE_IMC_MACROS_HPP_INCLUDED_
@@ -760,7 +760,5 @@
 #define DUNE_IMC_DYNOBSVEC 1000
 //! NegotiationData identification number.
 #define DUNE_IMC_NEGOTIATIONDATA 1010
-//! NegotiationMsgLog identification number.
-#define DUNE_IMC_NEGOTIATIONMSGLOG 1011
 
 #endif

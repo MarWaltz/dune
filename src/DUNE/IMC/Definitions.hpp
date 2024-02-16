@@ -28,7 +28,7 @@
 //***************************************************************************
 // Automatically generated.                                                 *
 //***************************************************************************
-// IMC XML MD5: feead2f5ef68963728f09deea5b4dbdd                            *
+// IMC XML MD5: 86c7ceace2a6f6239ea89a0e5bc64a3f                            *
 //***************************************************************************
 
 #ifndef DUNE_IMC_DEFINITIONS_HPP_INCLUDED_
@@ -29343,18 +29343,12 @@ namespace DUNE
     public:
       //! MMSI.
       std::string mmsi;
-      //! Concession level.
-      fp32_t concession;
       //! Intended Course.
       fp32_t cog_int;
-      //! Intended Course Offset.
-      fp32_t cog_int_off;
       //! Intended Speed.
       fp32_t sog_int;
-      //! Intended Speed Offset.
-      fp32_t sog_int_off;
       //! Negotiation state.
-      uint8_t state;
+      std::string state;
 
       static uint16_t
       getIdStatic(void)
@@ -29403,84 +29397,13 @@ namespace DUNE
       unsigned
       getFixedSerializationSize(void) const
       {
-        return 21;
+        return 8;
       }
 
       unsigned
       getVariableSerializationSize(void) const
       {
-        return IMC::getSerializationSize(mmsi);
-      }
-
-      void
-      fieldsToJSON(std::ostream& os__, unsigned nindent__) const;
-    };
-
-    //! Negotiation message log.
-    class NegotiationMsgLog: public Message
-    {
-    public:
-      //! MMSI.
-      std::string mmsi;
-      //! Received Messages.
-      uint8_t msg_in;
-      //! Transmitted Messages.
-      uint8_t msg_out;
-
-      static uint16_t
-      getIdStatic(void)
-      {
-        return 1011;
-      }
-
-      NegotiationMsgLog(void);
-
-      NegotiationMsgLog*
-      clone(void) const
-      {
-        return new NegotiationMsgLog(*this);
-      }
-
-      void
-      clear(void);
-
-      bool
-      fieldsEqual(const Message& msg__) const;
-
-      int
-      validate(void) const;
-
-      uint8_t*
-      serializeFields(uint8_t* bfr__) const;
-
-      uint16_t
-      deserializeFields(const uint8_t* bfr__, uint16_t size__);
-
-      uint16_t
-      reverseDeserializeFields(const uint8_t* bfr__, uint16_t size__);
-
-      uint16_t
-      getId(void) const
-      {
-        return NegotiationMsgLog::getIdStatic();
-      }
-
-      const char*
-      getName(void) const
-      {
-        return "NegotiationMsgLog";
-      }
-
-      unsigned
-      getFixedSerializationSize(void) const
-      {
-        return 2;
-      }
-
-      unsigned
-      getVariableSerializationSize(void) const
-      {
-        return IMC::getSerializationSize(mmsi);
+        return IMC::getSerializationSize(mmsi) + IMC::getSerializationSize(state);
       }
 
       void

@@ -10,7 +10,7 @@
 // DUNE headers.
 #include <DUNE/DUNE.hpp>
 #include <Eigen/Dense>
-#include <eFLL/Fuzzy.h>
+//#include <eFLL/Fuzzy.h>
 
 namespace DUNE
 {

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libPlan.DB.a CMakeFiles/Plan.DB.dir/src/Plan/DB/Task.cpp.o
-/usr/bin/ranlib libPlan.DB.a

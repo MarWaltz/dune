@@ -1,2 +1,0 @@
-/usr/bin/ar qc libMonitors.Clock.a CMakeFiles/Monitors.Clock.dir/src/Monitors/Clock/Task.cpp.o
-/usr/bin/ranlib libMonitors.Clock.a

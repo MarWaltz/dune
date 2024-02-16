@@ -35,7 +35,7 @@
 #include <DUNE/Time/Delay.hpp>
 #include <Eigen/Dense>
 #include <random>
-#include <eFLL/Fuzzy.h>
+//#include <eFLL/Fuzzy.h>
 
 // ISO C++ 98 headers.
 #include <iomanip>
@@ -780,6 +780,7 @@ namespace Control
           double 
           fuzzyCollisionRisk(double dcpa, double tcpa)
           {
+            /*
             Fuzzy *fuzzy = new Fuzzy();
           
             // FuzzyInput
@@ -888,8 +889,9 @@ namespace Control
           
             //std::cout << "Output: \n\tRisk: Minimum-> " << minimum->getPertinence() << ", Average->" << average->getPertinence() << ", Maximum-> " << maximum->getPertinence() << std::endl;
             //std::cout << "Result: \n\tRisk: " << collision_risk << std::endl;
-
-            return collision_risk;
+            */
+            return 0.0;
+            //return collision_risk;
           }
 
           
@@ -897,7 +899,8 @@ namespace Control
           //! Give way responsibility level based on fuzzy logic
           double 
           fuzzyGiveWayResponsibility(double distance)
-          {
+          { 
+            /*
             Fuzzy *fuzzy = new Fuzzy();
 
             double Dist_safe = 0.5 * m_args.D_CLOSE;
@@ -959,8 +962,9 @@ namespace Control
           
             //std::cout << "Output: \n\tGive Way Responsibility: Low-> " << gw_resp_low->getPertinence() << ", Medium->" << gw_resp_medium->getPertinence() << ", High-> " << gw_resp_high->getPertinence() << std::endl;
             //std::cout << "Result: \n\tGive Way Responsibility: " << give_way_resp << std::endl;
-          
-            return give_way_resp;
+            */
+            return 0.0;
+            //return give_way_resp;
           }
 
 
@@ -968,6 +972,7 @@ namespace Control
           double 
           fuzzyConcessionLevel(double collision_risk, double give_way_responsibility)
           {
+            /*
             Fuzzy *fuzzy = new Fuzzy();
 
             // FuzzyInput
@@ -1077,9 +1082,9 @@ namespace Control
             //std::cout << "Result: \nConcession Level: " << concession_level_fuzzy << std::endl;
 
             return concession_level_fuzzy;
+            */
+            return 0.0;
           }
-
-
 
           //! Evaluate concession level based on collision risk, stand-on and give-way responsibilities
           void 

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libAutonomy.TextActions.a CMakeFiles/Autonomy.TextActions.dir/src/Autonomy/TextActions/Task.cpp.o
-/usr/bin/ranlib libAutonomy.TextActions.a

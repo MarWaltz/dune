@@ -1,2 +1,0 @@
-/usr/bin/ar qc libMonitors.Entities.a CMakeFiles/Monitors.Entities.dir/src/Monitors/Entities/Task.cpp.o
-/usr/bin/ranlib libMonitors.Entities.a

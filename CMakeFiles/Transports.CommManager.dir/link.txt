@@ -1,2 +1,0 @@
-/usr/bin/ar qc libTransports.CommManager.a CMakeFiles/Transports.CommManager.dir/src/Transports/CommManager/Task.cpp.o
-/usr/bin/ranlib libTransports.CommManager.a

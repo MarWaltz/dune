@@ -1,2 +1,0 @@
-/usr/bin/ar qc libPower.DOAMv1.a CMakeFiles/Power.DOAMv1.dir/src/Power/DOAMv1/Task.cpp.o
-/usr/bin/ranlib libPower.DOAMv1.a

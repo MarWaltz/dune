@@ -28,7 +28,7 @@
 //***************************************************************************
 // Automatically generated.                                                 *
 //***************************************************************************
-// IMC XML MD5: feead2f5ef68963728f09deea5b4dbdd                            *
+// IMC XML MD5: 86c7ceace2a6f6239ea89a0e5bc64a3f                            *
 //***************************************************************************
 
 // ISO C++ 98 headers.
@@ -31323,12 +31323,9 @@ namespace DUNE
     NegotiationData::clear(void)
     {
       mmsi.clear();
-      concession = 0;
       cog_int = 0;
-      cog_int_off = 0;
       sog_int = 0;
-      sog_int_off = 0;
-      state = 0;
+      state.clear();
     }
 
     bool
@@ -31336,11 +31333,8 @@ namespace DUNE
     {
       const IMC::NegotiationData& other__ = static_cast<const NegotiationData&>(msg__);
       if (mmsi != other__.mmsi) return false;
-      if (concession != other__.concession) return false;
       if (cog_int != other__.cog_int) return false;
-      if (cog_int_off != other__.cog_int_off) return false;
       if (sog_int != other__.sog_int) return false;
-      if (sog_int_off != other__.sog_int_off) return false;
       if (state != other__.state) return false;
       return true;
     }
@@ -31356,11 +31350,8 @@ namespace DUNE
     {
       uint8_t* ptr__ = bfr__;
       ptr__ += IMC::serialize(mmsi, ptr__);
-      ptr__ += IMC::serialize(concession, ptr__);
       ptr__ += IMC::serialize(cog_int, ptr__);
-      ptr__ += IMC::serialize(cog_int_off, ptr__);
       ptr__ += IMC::serialize(sog_int, ptr__);
-      ptr__ += IMC::serialize(sog_int_off, ptr__);
       ptr__ += IMC::serialize(state, ptr__);
       return ptr__;
     }
@@ -31370,11 +31361,8 @@ namespace DUNE
     {
       const uint8_t* start__ = bfr__;
       bfr__ += IMC::deserialize(mmsi, bfr__, size__);
-      bfr__ += IMC::deserialize(concession, bfr__, size__);
       bfr__ += IMC::deserialize(cog_int, bfr__, size__);
-      bfr__ += IMC::deserialize(cog_int_off, bfr__, size__);
       bfr__ += IMC::deserialize(sog_int, bfr__, size__);
-      bfr__ += IMC::deserialize(sog_int_off, bfr__, size__);
       bfr__ += IMC::deserialize(state, bfr__, size__);
       return bfr__ - start__;
     }
@@ -31384,12 +31372,9 @@ namespace DUNE
     {
       const uint8_t* start__ = bfr__;
       bfr__ += IMC::reverseDeserialize(mmsi, bfr__, size__);
-      bfr__ += IMC::reverseDeserialize(concession, bfr__, size__);
       bfr__ += IMC::reverseDeserialize(cog_int, bfr__, size__);
-      bfr__ += IMC::reverseDeserialize(cog_int_off, bfr__, size__);
       bfr__ += IMC::reverseDeserialize(sog_int, bfr__, size__);
-      bfr__ += IMC::reverseDeserialize(sog_int_off, bfr__, size__);
-      bfr__ += IMC::deserialize(state, bfr__, size__);
+      bfr__ += IMC::reverseDeserialize(state, bfr__, size__);
       return bfr__ - start__;
     }
 
@@ -31397,80 +31382,9 @@ namespace DUNE
     NegotiationData::fieldsToJSON(std::ostream& os__, unsigned nindent__) const
     {
       IMC::toJSON(os__, "mmsi", mmsi, nindent__);
-      IMC::toJSON(os__, "concession", concession, nindent__);
       IMC::toJSON(os__, "cog_int", cog_int, nindent__);
-      IMC::toJSON(os__, "cog_int_off", cog_int_off, nindent__);
       IMC::toJSON(os__, "sog_int", sog_int, nindent__);
-      IMC::toJSON(os__, "sog_int_off", sog_int_off, nindent__);
       IMC::toJSON(os__, "state", state, nindent__);
-    }
-
-    NegotiationMsgLog::NegotiationMsgLog(void)
-    {
-      m_header.mgid = 1011;
-      clear();
-    }
-
-    void
-    NegotiationMsgLog::clear(void)
-    {
-      mmsi.clear();
-      msg_in = 0;
-      msg_out = 0;
-    }
-
-    bool
-    NegotiationMsgLog::fieldsEqual(const Message& msg__) const
-    {
-      const IMC::NegotiationMsgLog& other__ = static_cast<const NegotiationMsgLog&>(msg__);
-      if (mmsi != other__.mmsi) return false;
-      if (msg_in != other__.msg_in) return false;
-      if (msg_out != other__.msg_out) return false;
-      return true;
-    }
-
-    int
-    NegotiationMsgLog::validate(void) const
-    {
-      return true;
-    }
-
-    uint8_t*
-    NegotiationMsgLog::serializeFields(uint8_t* bfr__) const
-    {
-      uint8_t* ptr__ = bfr__;
-      ptr__ += IMC::serialize(mmsi, ptr__);
-      ptr__ += IMC::serialize(msg_in, ptr__);
-      ptr__ += IMC::serialize(msg_out, ptr__);
-      return ptr__;
-    }
-
-    uint16_t
-    NegotiationMsgLog::deserializeFields(const uint8_t* bfr__, uint16_t size__)
-    {
-      const uint8_t* start__ = bfr__;
-      bfr__ += IMC::deserialize(mmsi, bfr__, size__);
-      bfr__ += IMC::deserialize(msg_in, bfr__, size__);
-      bfr__ += IMC::deserialize(msg_out, bfr__, size__);
-      return bfr__ - start__;
-    }
-
-    uint16_t
-    NegotiationMsgLog::reverseDeserializeFields(const uint8_t* bfr__, uint16_t size__)
-    {
-      const uint8_t* start__ = bfr__;
-      bfr__ += IMC::reverseDeserialize(mmsi, bfr__, size__);
-      bfr__ += IMC::deserialize(msg_in, bfr__, size__);
-      bfr__ += IMC::deserialize(msg_out, bfr__, size__);
-      return bfr__ - start__;
-    }
-
-    void
-    NegotiationMsgLog::fieldsToJSON(std::ostream& os__, unsigned nindent__) const
-    {
-      IMC::toJSON(os__, "mmsi", mmsi, nindent__);
-      IMC::toJSON(os__, "msg_in", msg_in, nindent__);
-      IMC::toJSON(os__, "msg_out", msg_out, nindent__);
     }
   }
 }

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libTransports.TCPOnDemand.a CMakeFiles/Transports.TCPOnDemand.dir/src/Transports/TCPOnDemand/Task.cpp.o
-/usr/bin/ranlib libTransports.TCPOnDemand.a

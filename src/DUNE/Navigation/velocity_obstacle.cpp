@@ -7,7 +7,7 @@
 // Local headers.
 #include <DUNE/Navigation/velocity_obstacle.hpp>
 #include <DUNE/DUNE.hpp>
-#include <eFLL/Fuzzy.h>
+//#include <eFLL/Fuzzy.h>
 
 static const double DEG2RAD = M_PI/180.0f;
 static const double RAD2DEG = 180.0f/M_PI;

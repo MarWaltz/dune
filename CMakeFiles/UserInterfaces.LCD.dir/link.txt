@@ -1,2 +1,0 @@
-/usr/bin/ar qc libUserInterfaces.LCD.a CMakeFiles/UserInterfaces.LCD.dir/src/UserInterfaces/LCD/Task.cpp.o
-/usr/bin/ranlib libUserInterfaces.LCD.a

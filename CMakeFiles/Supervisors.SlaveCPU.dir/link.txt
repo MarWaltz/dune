@@ -1,2 +1,0 @@
-/usr/bin/ar qc libSupervisors.SlaveCPU.a CMakeFiles/Supervisors.SlaveCPU.dir/src/Supervisors/SlaveCPU/Task.cpp.o
-/usr/bin/ranlib libSupervisors.SlaveCPU.a

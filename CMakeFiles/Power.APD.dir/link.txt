@@ -1,2 +1,0 @@
-/usr/bin/ar qc libPower.APD.a CMakeFiles/Power.APD.dir/src/Power/APD/Task.cpp.o
-/usr/bin/ranlib libPower.APD.a

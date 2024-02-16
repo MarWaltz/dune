@@ -1,2 +1,0 @@
-/usr/bin/ar qc libSensors.MLBL.a CMakeFiles/Sensors.MLBL.dir/src/Sensors/MLBL/Task.cpp.o
-/usr/bin/ranlib libSensors.MLBL.a

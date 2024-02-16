@@ -1,2 +1,0 @@
-/usr/bin/ar qc libManeuver.CommsRelay.a CMakeFiles/Maneuver.CommsRelay.dir/src/Maneuver/CommsRelay/Task.cpp.o
-/usr/bin/ranlib libManeuver.CommsRelay.a
