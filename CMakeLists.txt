@@ -246,6 +246,26 @@ if(ELLIPSOIDAL)
   add_definitions(-DDUNE_ELLIPSOIDAL_DISPLACE)
 endif(ELLIPSOIDAL)
 
+### ADDED ###
+# Set the path to Torch and other packages
+set(CMAKE_PREFIX_PATH "/home/mwaltz/dune/dune/libtorch")
+
+# Find LibTorch
+find_package(Torch REQUIRED)
+
+# Add include directories for LibTorch
+include_directories(${TORCH_INCLUDE_DIRS})
+
+# Add executable target
+add_executable(neuralNetwork neuralNetwork/neuralNetwork.cpp)
+
+# Link against LibTorch libraries
+target_link_libraries(neuralNetwork ${TORCH_LIBRARIES})
+
+# Set C++ standard
+set_property(TARGET neuralNetwork PROPERTY CXX_STANDARD 17)
+### ADDING FINISHED ###
+
 ##########################################################################
 #                          Tasks                                         #
 ##########################################################################

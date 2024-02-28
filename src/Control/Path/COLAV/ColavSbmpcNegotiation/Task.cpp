@@ -32,6 +32,7 @@
 #include <DUNE/Control.hpp>
 #include <DUNE/Navigation/sb_mpc.hpp>
 #include <DUNE/Navigation/velocity_obstacle.hpp>
+#include <DUNE/Navigation/rl.hpp>
 #include <DUNE/Time/Delay.hpp>
 #include <Eigen/Dense>
 #include <random>
@@ -91,15 +92,18 @@ namespace Control
           simulationBasedMpc sb_mpc;
           //! velocity_obstacle object
           velocityObstacle velocity_obstacle;
+          //! rl object
+          rlAgent rl_agent;
+
           //! List of asv states
           std::vector<double> m_asv_state = std::vector<double>(6,0.0);
           Math::Matrix m_dyn_obst_state;
           //! Desired speed message
           IMC::DesiredSpeed des_speed;
           //! Negotiation data to send
-          IMC::NegotiationData intention_to_send;
+          //IMC::NegotiationData intention_to_send;
           //! Negotiation message counts
-          IMC::NegotiationMsgLog negotiation_msg_log;
+          //IMC::NegotiationMsgLog negotiation_msg_log;
           //! Ownship mmsi
           std::string m_mmsi;
           //! Ownship latitude
@@ -364,7 +368,7 @@ namespace Control
             bind<IMC::DynObsVec>(this);
             bind<IMC::DesiredSpeed>(this);
             bind<IMC::DesiredPath>(this);
-            bind<IMC::NegotiationData>(this);
+            //bind<IMC::NegotiationData>(this);
           }
 
 
@@ -450,8 +454,8 @@ namespace Control
                                     m_args.KAPPA, m_args.K_DP, m_args.K_DCHI);
             velocity_obstacle.Vs_opt_prev(0) = m_asv_state[3] * std::cos(m_asv_state[2]);
             velocity_obstacle.Vs_opt_prev(1) = m_asv_state[3] * std::sin(m_asv_state[2]);
+            rl_agent.create(0.0);
           }
-  
 
           void
           reset(void)
@@ -551,7 +555,7 @@ namespace Control
             }
           }
 
-
+          /*
           void 
           publishNegotiationData()
           {
@@ -567,8 +571,8 @@ namespace Control
             //spew("MMSI: %i COG_int: %f SOG_int: %f State: %i", std::stoi(m_mmsi), Angles::degrees(Angles::normalizeRadian(ref + psi_os)), m_asv_state[3] * u_os, negotiation_state);
             return;
           }
-
-
+          */
+          /*
           void
           publishNegotiationMsgLog()
           {
@@ -578,6 +582,7 @@ namespace Control
             dispatch(negotiation_msg_log);
             return;
           }
+
 
 
           void
@@ -606,7 +611,7 @@ namespace Control
             }
             return;
           }
-
+          */
 
           inline double
           computeK(double l1, double l2, double ts_y, double factor)
@@ -1327,7 +1332,7 @@ namespace Control
                 //std::cout << "In_Nego:" << in_negotiation << " Nego_State:" << negotiation_state << " Nego_state_others:" << others_ready << " Nego_Iter:" << negotiation_iteration <<std::endl;
                 if (in_negotiation==false)
                 {
-                    publishNegotiationData();
+                    //publishNegotiationData();
                     in_negotiation=true;
                 }
                 else if (in_negotiation==true)
@@ -1344,11 +1349,11 @@ namespace Control
                             std::tie(psi_os_temp, u_os_temp, cost) = velocity_obstacle.velocityUpdate(m_asv_state[2], m_asv_state[3], m_asv_state, m_dyn_obst_state);
                         }
                         updateNegotiationState();
-                        publishNegotiationData();
+                        //publishNegotiationData();
                     }
                     else if (negotiation_state==1)
                     {
-                        publishNegotiationData();
+                        //publishNegotiationData();
                     }
                 }
                 checkNegotiationStates();
@@ -1356,7 +1361,7 @@ namespace Control
                 { 
                     setOptCtrl(ref, m_des_speed_init, psi_os, u_os);
                     //publishNegotiationData();
-                    publishNegotiationMsgLog();
+                    //publishNegotiationMsgLog();
                     spew("MMSI: %i Msg_in: %i Msg_out: %i", std::stoi(m_mmsi), msg_in_counter, msg_out_counter);
                     spew("MMSI: %i APPLYING COG change: %f SOG change: %f", std::stoi(m_mmsi), psi_os*RAD2DEG, u_os);
                     msg_out_counter = 0;
@@ -1391,6 +1396,11 @@ namespace Control
                 {
                     //std::tie(psi_os_temp, u_os_temp, cost) = velocity_obstacle.velocityUpdate(m_asv_state[2], m_asv_state[3], m_asv_state, m_dyn_obst_state);
                     std::tie(psi_os_temp, u_os_temp, cost) = velocity_obstacle.velocityUpdate(ref, m_des_speed_init, m_asv_state, m_dyn_obst_state);
+                }
+                else if (m_args.colav_algorithm==3)
+                {
+                    std::tie(psi_os_temp, u_os_temp) = rl_agent.getAction(ref, m_des_speed_init, m_asv_state, m_dyn_obst_state); 
+                    // ref = desired heading, m_des_speed_init = desired speed
                 }
                 psi_os = psi_os_temp;
                 u_os = u_os_temp;
